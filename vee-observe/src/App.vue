@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import VeeObserve from './components/index';
+import VeeObserve from 'vee-observe';
 
 export default {
   name: 'App',
