@@ -1,18 +1,25 @@
 {
   "name": "vee-observe",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name vee-observe --dest lib src/components/index.js"
   },
+  "license": "MIT",
   "main": "lib/vee-observe.umd.min.js",
   "dependencies": {
     "core-js": "^3.8.3",
     "vee-observe": "^0.1.0",
     "vue": "^2.6.14"
   },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "plugin",
+    "intersection-observer"
+  ],
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
