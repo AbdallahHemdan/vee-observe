@@ -49,63 +49,64 @@ npm install vee-observe --save
 
 ```vue
 <template>
-  <div id="app">
-    <div class="large-content__wrapper">
-      Scroll down to see the image
-    </div>
+	<div id="app">
+		<div class="large-content__wrapper">Scroll down to see the image</div>
 
-    <vee-observe
-      :root="null"
-      :root-margin="'0px'"
-      :threshold="0"
-      :once="false"
-      @on-change="onChange"
-      @not-supported="notSupported"
-    >
-      <img :src="imgSrc" />
-    </vee-observe>
-  </div>
+		<vee-observe
+			:root="null"
+			:root-margin="'0px'"
+			:threshold="0"
+			:once="false"
+			@on-change="onChange"
+			@not-supported="notSupported"
+		>
+			<img :src="imgSrc" />
+		</vee-observe>
+	</div>
 </template>
 
 <script>
 import VeeObserve from './components/observer/observer.vue';
 
 export default {
-  name: 'App',
-  data () {
-    return {
-      imgSrc: '',
-    };
-  },
-  components: { VeeObserve },
-  methods: {
-    onChange (entry) {
-      console.log('on change', entry);
-      if (entry.isIntersecting) {
-        console.log('intersecting');
-        this.imgSrc = 'https://picsum.photos/200/300';
-      }
-    },
-    
-    notSupported () {
-      console.log('not supported');
-      this.imgSrc = 'https://picsum.photos/200/300';
-    },
-  },
+	name: 'App',
+	data() {
+		return {
+			imgSrc: '',
+		};
+	},
+	components: { VeeObserve },
+	methods: {
+		onChange(entry) {
+			console.error('on change', entry);
+			if (entry.isIntersecting) {
+				console.error('intersecting');
+				this.imgSrc = 'https://picsum.photos/200/300';
+			}
+		},
+		notSupported() {
+			console.error('not supported');
+			this.imgSrc = 'https://picsum.photos/200/300';
+		},
+	},
+	mounted() {
+		window.addEventListener('scroll', (e) => {
+			this.imgSrc = 'https://picsum.photos/200/300';
+		});
+	},
 };
 </script>
 
 <style>
 .large-content__wrapper {
-  height: 2000px;
-  line-height: 1000px;
-  text-align: center;
-  font-size: 48px;
-  color: #2c3e50;
-  font-weight: bold;
+	height: 2000px;
+	line-height: 1000px;
+	text-align: center;
+	font-size: 48px;
+	color: #2c3e50;
+	font-weight: bold;
 }
 </style>
-
 ```
 
 ## API
@@ -114,25 +115,21 @@ export default {
 
 Provide these as the options argument as props on the **`<vee-observe />`** component.
 
-| Name           | Type                         | Default     | Description |
-| ---------------| -----------------------------| ----------- | ----------- |
-| **root**       | `Element`                    | `document`  | The Intersection Observer interface's read-only root property identifies the Element or Document whose bounds are treated as the bounding box of the viewport for the element which is the observer's target. If the root is `null`, then the bounds of the actual document viewport are used.  |
-| **rootMargin** | `string`                     | `'0px'`     | Margin around the root. Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left). The values can be percentages. This set of values serves to grow or shrink each side of the root element's bounding box before computing intersections. Defaults to all zeros. |
-| **threshold**  | `number` or `number[]`       | `0`         | Number between `0` and `1` indicating the percentage that should be visible before triggering. Can also be an array of numbers, to create multiple trigger points. |
-| **once**       | `boolean`                    | `false`     | Only trigger the observer once. |
-| **onChange**   | `(entry, unobserve) => void` | `undefined` | Call this function whenever the intersection state changes. It will receive the current `IntersectionObserverEntry` along with `unobserve` function to stop monitoring and observing the component. |
-| **notSupported**   | `() => void` | `undefined` | Call this function if intersection observer is not support. |
+| Name             | Type                         | Default     | Description                                                                                                                                                                                                                                                                                                       |
+| ---------------- | ---------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **root**         | `Element`                    | `document`  | The Intersection Observer interface's read-only root property identifies the Element or Document whose bounds are treated as the bounding box of the viewport for the element which is the observer's target. If the root is `null`, then the bounds of the actual document viewport are used.                    |
+| **rootMargin**   | `string`                     | `'0px'`     | Margin around the root. Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left). The values can be percentages. This set of values serves to grow or shrink each side of the root element's bounding box before computing intersections. Defaults to all zeros. |
+| **threshold**    | `number` or `number[]`       | `0`         | Number between `0` and `1` indicating the percentage that should be visible before triggering. Can also be an array of numbers, to create multiple trigger points.                                                                                                                                                |
+| **once**         | `boolean`                    | `false`     | Only trigger the observer once.                                                                                                                                                                                                                                                                                   |
+| **onChange**     | `(entry, unobserve) => void` | `undefined` | Call this function whenever the intersection state changes. It will receive the current `IntersectionObserverEntry` along with `unobserve` function to stop monitoring and observing the component.                                                                                                               |
+| **notSupported** | `() => void`                 | `undefined` | Call this function if intersection observer is not support.                                                                                                                                                                                                                                                       |
 
 [package-url]: https://www.npmjs.com/package/vee-observe
 [npm-version-svg]: https://img.shields.io/npm/v/vee-observe.svg
-[npm-minzip-svg]:
-  https://img.shields.io/bundlephobia/minzip/vee-observe.svg
-[bundlephobia-url]:
-  https://bundlephobia.com/result?p=vee-observe
+[npm-minzip-svg]: https://img.shields.io/bundlephobia/minzip/vee-observe.svg
+[bundlephobia-url]: https://bundlephobia.com/result?p=vee-observe
 [license-image]: http://img.shields.io/npm/l/vee-observe.svg
 [license-url]: LICENSE
 [downloads-image]: http://img.shields.io/npm/dm/vee-observe.svg
-[downloads-url]:
-  http://npm-stat.com/charts.html?package=vee-observe
-[test-image]:
-  https://github.com/thebuilder/vee-observe/workflows/Test/badge.svg
+[downloads-url]: http://npm-stat.com/charts.html?package=vee-observe
+[test-image]: https://github.com/thebuilder/vee-observe/workflows/Test/badge.svg
