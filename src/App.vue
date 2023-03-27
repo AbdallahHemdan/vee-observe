@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import VeeObserve from 'vee-observe';
+import VeeObserve from './components/observer/observer.vue';
 
 export default {
   name: 'App',

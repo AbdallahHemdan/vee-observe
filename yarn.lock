@@ -5686,14 +5686,6 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
-vee-observe@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/vee-observe/-/vee-observe-0.1.0.tgz#672ac2cf6b0933d0cd99a6b5c678d55d63809537"
-  integrity sha512-FgU2I34WZ3aKhAzLG4GKGfkPa1pq4sHVKI0pILtUHA8xChy5ilcUDvkpirt12Vx0yGa/LDVNtnN79schxFuU7g==
-  dependencies:
-    core-js "^3.8.3"
-    vue "^2.6.14"
-
 vue-eslint-parser@^8.0.1:
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-8.3.0.tgz#5d31129a1b3dd89c0069ca0a1c88f970c360bd0d"
