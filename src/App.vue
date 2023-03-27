@@ -11,7 +11,7 @@
       :once="false"
       @on-change="onChange"
     >
-      <img src="https://picsum.photos/200/300" alt="image">
+      <img :src="imgSrc" />
     </vee-observe>
   </div>
 </template>
@@ -21,12 +21,18 @@ import VeeObserve from 'vee-observe';
 
 export default {
   name: 'App',
+  data () {
+    return {
+      imgSrc: '',
+    };
+  },
   components: { VeeObserve },
   methods: {
     onChange (entry) {
       console.log('on change', entry);
       if (entry.isIntersecting) {
         console.log('intersecting');
+        this.imgSrc = 'https://picsum.photos/200/300';
       }
     },
   },
