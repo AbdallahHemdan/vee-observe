@@ -60,6 +60,8 @@ export default {
       }, options);
 
       this.observer.observe(this.$el);
+    } else {
+      this.$emit('not-supported');
     }
   },
 

@@ -10,6 +10,7 @@
       :threshold="0"
       :once="false"
       @on-change="onChange"
+      @not-supported="notSupported"
     >
       <img :src="imgSrc" />
     </vee-observe>
@@ -34,6 +35,11 @@ export default {
         console.log('intersecting');
         this.imgSrc = 'https://picsum.photos/200/300';
       }
+    },
+    
+    notSupported () {
+      console.log('not supported');
+      this.imgSrc = 'https://picsum.photos/200/300';
     },
   },
 };
