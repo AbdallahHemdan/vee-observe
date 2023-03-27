@@ -13,6 +13,7 @@
 [![GZipped size][npm-minzip-svg]][bundlephobia-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
+<a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg"/></a>
 [![GitHub contributors](https://img.shields.io/github/contributors/AbdallahHemdan/vee-observe)](https://github.com/AbdallahHemdan/vee-observe/contributors)
 [![GitHub stars](https://img.shields.io/github/stars/AbdallahHemdan/vee-observe)](https://github.com/AbdallahHemdan/vee-observe/stargazers)
 
