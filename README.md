@@ -60,6 +60,7 @@ npm install vee-observe --save
       :threshold="0"
       :once="false"
       @on-change="onChange"
+      @not-supported="notSupported"
     >
       <img :src="imgSrc" />
     </vee-observe>
@@ -67,7 +68,7 @@ npm install vee-observe --save
 </template>
 
 <script>
-import VeeObserve from 'vee-observe';
+import VeeObserve from './components/observer/observer.vue';
 
 export default {
   name: 'App',
@@ -79,9 +80,16 @@ export default {
   components: { VeeObserve },
   methods: {
     onChange (entry) {
+      console.log('on change', entry);
       if (entry.isIntersecting) {
+        console.log('intersecting');
         this.imgSrc = 'https://picsum.photos/200/300';
       }
+    },
+    
+    notSupported () {
+      console.log('not supported');
+      this.imgSrc = 'https://picsum.photos/200/300';
     },
   },
 };
@@ -97,6 +105,7 @@ export default {
   font-weight: bold;
 }
 </style>
+
 ```
 
 ## API
@@ -112,6 +121,7 @@ Provide these as the options argument as props on the **`<vee-observe />`** comp
 | **threshold**  | `number` or `number[]`       | `0`         | Number between `0` and `1` indicating the percentage that should be visible before triggering. Can also be an array of numbers, to create multiple trigger points. |
 | **once**       | `boolean`                    | `false`     | Only trigger the observer once. |
 | **onChange**   | `(entry, unobserve) => void` | `undefined` | Call this function whenever the intersection state changes. It will receive the current `IntersectionObserverEntry` along with `unobserve` function to stop monitoring and observing the component. |
+| **notSupported**   | `() => void` | `undefined` | Call this function whenever if intersection observer is not support. |
 
 [package-url]: https://www.npmjs.com/package/vee-observe
 [npm-version-svg]: https://img.shields.io/npm/v/vee-observe.svg
