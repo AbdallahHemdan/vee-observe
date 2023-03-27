@@ -23,7 +23,7 @@ export default {
       default: '0px',
     },
     threshold: {
-      type: Number,
+      type: [Number, Array],
       default: 0,
     },
     once: {
