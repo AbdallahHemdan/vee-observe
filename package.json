@@ -1,6 +1,6 @@
 {
   "name": "vee-observe",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "description": "Monitor if a component is inside the viewport, using IntersectionObserver API in Vue.",
   "scripts": {
     "serve": "vue-cli-service serve",
